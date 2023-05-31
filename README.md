@@ -1,81 +1,51 @@
-# Turborepo starter
+# ATDDサンプルリポジトリ
 
-This is an official starter Turborepo.
+このリポジトリはATDD(Acceptance Test Driven Development: 受入テスト駆動開発)でプロダクトを開発するためのものである。
+E2EテストやUIのテストを即座に作成し、実行できるようにパッケージやディレクトリを構成している。
 
-## Using this example
+## Getting started
 
-Run the following command:
+まずは以下のコマンドを実行し、正常にテストが実行されることを確かめる。
 
-```sh
-npx create-turbo@latest
+```bash
+$ npm run test
 ```
 
-## What's inside?
+すべてのテストがパスし、レポートが表示されれば成功だ。
 
-This Turborepo includes the following packages/apps:
+!!!  TODO: 作成されるレポート例
 
-### Apps and Packages
+このとき、何が起こっているかを概説する。
+ここで、「アプリ」とはこのリポジトリの `apps/`配下にあるNPMプロジェクトを指す。
+また、「パッケージ」とはこのリポジトリの `packages/` 配下にあるNPMプロジェクトを指す。
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `ui`: a stub React component library shared by both `web` and `docs` applications
-- `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `tsconfig`: `tsconfig.json`s used throughout the monorepo
+- すべてのアプリ、パッケージのユニットテストを実行する
+- すべてのアプリを立ち上げ、テストデータを準備・投入し、インテグレーションテスト、E2Eテストを実行する
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+## リポジトリの構成
 
-### Utilities
+このリポジトリは[turborepo](https://turbo.build)を用いてモノレポとして作成されている。
+テストやアプリの実行はすべてトップレベルのディレクトリから行えるが、パッケージインストールなどは各々のプロジェクトに移動した方が簡単である。
 
-This Turborepo has some additional tools already setup for you:
+## 自分のアプリを作っていく
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+リポジトリが正常に動作することを確認したら、早速自分のアプリを作っていこう。
+もちろん開発はATDDで行う。以下のような形だ。
 
-### Build
+1. 最初の受入テストを書く
+2. 受入テストを実行する。想定通り失敗することを確認する。
+3. 受入テストを通すためのTODOリストを作る
+4. TODOリストの一つ目の条件を満たすユニットテストを書く
+5. ユニットテストを実行する。想定通り失敗することを確認する。
+6. ユニットテストを成功させるための簡易的な実装コードを書く
+7. ユニットテストを実行する。今度はテストが成功する。
+8. 実装コードをリファクタする。機能を追加しないように注意。
+9. ユニットテストを追加する。簡易的な実装では失敗するようなテストを作る。テストが想定通り失敗する。
+10. 実装コードを修正し、すべてのテストを通るようにする。
+11. 実装コードをリファクタする。
+12. TODOリストから新しい条件を取り出し、受入テストが通るまで4~11を繰り返す。
 
-To build all apps and packages, run the following command:
+具体的にやっていこう。
 
-```
-cd my-turborepo
-pnpm build
-```
+## 1. 最初の受入テストを書く
 
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm dev
-```
-
-### Remote Caching
-
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
