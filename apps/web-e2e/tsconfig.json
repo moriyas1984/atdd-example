@@ -1,0 +1,9 @@
+{
+    "extends": "../../packages/tsconfig/base.json",
+    "compilerOptions": {
+        "moduleResolution": "node16",
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}
