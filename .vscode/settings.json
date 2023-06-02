@@ -1,9 +1,18 @@
 {
-    "cucumber.features": [
-        "**/*.feature",
-    ],
-    "cucumber.glue": [
-        "**/cypress/e2e/**/*.ts",
-        "**/cypress/e2e/common_step_definitions/**/*.ts"
-    ]
+  "cucumber.features": ["**/*.feature"],
+  "cucumber.glue": [
+    "**/cypress/e2e/**/*.ts",
+    "**/cypress/e2e/common_step_definitions/**/*.ts"
+  ],
+  "prettier.configPath": ".prettierrc",
+  "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
