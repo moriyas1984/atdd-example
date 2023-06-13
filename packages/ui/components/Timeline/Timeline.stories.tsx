@@ -1,7 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import Timeline from './Timeline'
 
+import '@testing-library/jest-dom'
 import { within } from '@storybook/testing-library'
+import { expect } from '@storybook/jest'
 
 const meta = {
   title: 'ATDD-Exapmle/Timeline',
@@ -20,9 +22,9 @@ export const NoTweet: Story = {
     const canvas = within(canvasElemment)
     const tweets = () => canvas.queryByTestId('tweet')
     // tweetsが空配列の場合、Tweetは表示されない
-    expect(tweets).not.toBeIntheDocument()
+    await expect(tweets).not.toBeIntheDocument()
     const message = () => canvas.getByText('今何してる?')
     // '今何してる?'と表示される
-    expect(message).toBeInTheDocument()
+    await expect(message).toBeInTheDocument()
   },
 }
